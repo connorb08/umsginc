@@ -2,6 +2,7 @@
 
 import { useSession, signIn, signOut, SessionProvider } from "next-auth/react";
 import { useState, useEffect } from "react";
+import Image from 'next/image';
 
 const LoginButton = () => {
     const { data: session } = useSession();
@@ -16,13 +17,15 @@ const LoginButton = () => {
         return (
             <div className="relative flex">
                 <button onClick={toggleDropdown} className="relative">
-                    <img
+                    <Image
                         id="avatarButton"
                         data-dropdown-toggle="userDropdown"
                         data-dropdown-placement="bottom-start"
                         className="w-12 h-12 rounded-full cursor-pointer"
                         src={session.user!.image || ""}
                         alt="User dropdown"
+                        height={48}
+                        width={48}
                     />
                 </button>
 

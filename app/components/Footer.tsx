@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Footer = () => {
     return (
         <footer className="bg-white dark:bg-gray-900">
@@ -8,10 +10,12 @@ const Footer = () => {
                             href="https://umaine.edu/umsg/"
                             className="flex items-center"
                         >
-                            <img
-                                src="./umsglogo.png"
+                            <Image
+                                src="/umsglogo.png"
                                 className="h-8 mr-3"
                                 alt="FlowBite Logo"
+                                width={32}
+                                height={32}
                             />
                             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                                 UMSG Inc.
