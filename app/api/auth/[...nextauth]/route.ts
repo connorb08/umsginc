@@ -1,19 +1,27 @@
-import NextAuth from "next-auth"
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 const authOptions = {
-  // Configure one or more authentication providers
-  providers: [
-    GoogleProvider({
-      clientId: "process.env.GOOGLE_CLIENT_ID",
-      clientSecret: "process.env.GOOGLE_CLIENT_SECRET",
-    }),
-  ],
-}
+    // Configure one or more authentication providers
+    providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        }),
+    ],
+    callbacks: {
+        async signIn({ account, profile }: any) {
+            if (account.provider === "google") {
+                return (
+                    profile.email_verified &&
+                    profile.email.endsWith("@maine.edu")
+                );
+            }
+            return true; // Do different verification for other providers that don't have `email_verified`
+        },
+    },
+};
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST }
-
-// export default NextAuth(authOptions)
-
+export { handler as GET, handler as POST };
