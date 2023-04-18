@@ -2,7 +2,7 @@
 
 import { useSession, signIn, signOut, SessionProvider } from "next-auth/react";
 import { useState, useEffect } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 const LoginButton = () => {
     const { data: session } = useSession();

@@ -30,7 +30,7 @@ const Footer = () => {
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
                                     <a
-                                        href="https://flowbite.com/"
+                                        href="#"
                                         className="hover:underline"
                                     >
                                         Financials
@@ -38,7 +38,7 @@ const Footer = () => {
                                 </li>
                                 <li className="mb-4">
                                     <a
-                                        href="https://tailwindcss.com/"
+                                        href="#"
                                         className="hover:underline"
                                     >
                                         Organizations
@@ -46,7 +46,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <a
-                                        href="https://tailwindcss.com/"
+                                        href="#"
                                         className="hover:underline"
                                     >
                                         Third
@@ -62,7 +62,7 @@ const Footer = () => {
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
                                     <a
-                                        href="https://github.com/themesberg/flowbite"
+                                        href="#"
                                         className="hover:underline "
                                     >
                                         Instagram
@@ -70,7 +70,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <a
-                                        href="https://discord.gg/4eeurUVvTy"
+                                        href="#"
                                         className="hover:underline"
                                     >
                                         LinkedIn
@@ -95,7 +95,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <a href="#" className="hover:underline">
-                                        Legal counsel
+                                        Legal Counsel
                                     </a>
                                 </li>
                             </ul>

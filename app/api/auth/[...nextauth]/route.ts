@@ -3,11 +3,14 @@ import GoogleProvider from "next-auth/providers/google";
 
 const authOptions = {
     // Configure one or more authentication providers
-	site: process.env.NEXTAUTH_URL,
+    site: process.env.NEXTAUTH_URL,
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            // authorization: {
+            //     url: "https://example.com/oauth/authorization",
+            // },
         }),
     ],
     callbacks: {
@@ -19,6 +22,9 @@ const authOptions = {
                 );
             }
             return true; // Do different verification for other providers that don't have `email_verified`
+        },
+        async redirect({ url, baseUrl }: any) {
+            return baseUrl;
         },
     },
 };

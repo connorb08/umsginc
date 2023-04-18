@@ -43,7 +43,10 @@ export default function RootLayout({
                 <meta name="theme-color" content="#ffffff" />
             </Head>
 
-            <body className="overscroll-none">{children}<Footer /></body>
+            <body className="overscroll-none">
+                {children}
+                <Footer />
+            </body>
         </html>
     );
 }
