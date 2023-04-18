@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 
 const authOptions = {
     // Configure one or more authentication providers
+	site: process.env.NEXTAUTH_URL,
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,

@@ -9,7 +9,7 @@ import type { NextRequest } from 'next/server'
 //   runtime: 'edge',
 // }
 
-export const runtime = 'experimental-edge';
+export const runtime = 'edge';
 
 const handler = async (req: NextRequest) => {
   return new Response(JSON.stringify({ name: 'John Doe' }))
