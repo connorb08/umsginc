@@ -3,7 +3,7 @@
 // }
 // Next.js Edge API Routes: https://nextjs.org/docs/api-routes/edge-api-routes
 
-import { db } from "@/app/db/firestore";
+import { db } from "@/db/firestore";
 // import { handleClientScriptLoad } from "next/script";
 import type { NextRequest } from "next/server";
 // import { getCurrentUser } from "../session";

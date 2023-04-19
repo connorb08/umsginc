@@ -1,8 +1,9 @@
 import { firestore } from "./init"
 import { CollectionGroup, FirestoreDataConverter, QueryDocumentSnapshot } from "@google-cloud/firestore"
 
-// Import or define your types
-import {DBUser} from './user'
+// Import types
+import { DBUser } from "@/db/models/user"
+import { DBPosition } from "@/db/models/position"
 
 // Make the helper types for updates:
 type PathImpl<T, K extends keyof T> =
@@ -40,5 +41,6 @@ function _collection<T>(collectionPath: string) {
 }
 
 export const db = {
-    users: _collection<DBUser>('users')
+    users: _collection<DBUser>('users'),
+    positions: _collection<DBPosition>('positions')
 }

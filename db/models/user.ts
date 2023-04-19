@@ -1,4 +1,4 @@
-import { db, UpdateData } from "./firestore";
+import { db, UpdateData } from "@/db/firestore";
 
 export interface DBUser {
     uid: string;

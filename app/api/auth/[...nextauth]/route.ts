@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { db } from "@/app/db/firestore";
+import { db } from "@/db/firestore";
 import { getProviders } from "next-auth/react";
-import { User } from "@/app/db/user";
+import { User } from "@/db/models/user";
 
 export const authOptions = {
     // Configure one or more authentication providers

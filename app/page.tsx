@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import { Metadata } from "next/types";
 import { useSession, signIn, SessionProvider } from "next-auth/react";
-import LoginButton from "~/components/LoginButton";
+import LoginButton from "@/components/LoginButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
