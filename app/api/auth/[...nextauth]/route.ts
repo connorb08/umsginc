@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { db } from "@/app/db/init";
+import { db } from "@/app/db/firestore";
 import { getProviders } from "next-auth/react";
 import { User } from "@/app/db/user";
 
@@ -23,14 +23,10 @@ export const authOptions = {
                     try {
 
                         // Create user account if it doesn't exist
-                        const new_user: User = {
-                            uid: uid,
-                            email: profile.email,
-                            position: "none"
-                        }
-                        const write = await db.collection('users').doc(uid).create(new_user)
+                        const new_user: User = new User(uid, profile.email, 0);
+                        const write = await db.users.doc(uid).create(new_user.to_dict());
 
-                    } finally {return true}
+                    } catch {console.log('Cannot create account. User already exists or an error occured.')} finally {return true}
 
                 } else { return false; } //return 'error_page?msg=must be verified and maine account
             }

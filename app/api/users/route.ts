@@ -3,7 +3,7 @@
 // }
 // Next.js Edge API Routes: https://nextjs.org/docs/api-routes/edge-api-routes
 
-import { db } from "@/app/db/init";
+import { db } from "@/app/db/firestore";
 // import { handleClientScriptLoad } from "next/script";
 import type { NextRequest } from "next/server";
 // import { getCurrentUser } from "../session";
@@ -12,8 +12,6 @@ import type { NextRequest } from "next/server";
 //     runtime: "edge",
 // };
 
-const users = db.collection("users");
-
 export const GET = async (req: NextRequest) => {
     // const user = await getCurrentUser();
 
@@ -21,7 +19,7 @@ export const GET = async (req: NextRequest) => {
         const { searchParams } = new URL(req.url);
 
         const uid = Number(searchParams.get("uid"));
-        const userCol = (await users.where("uid", "==", uid).limit(1).get()).docs;
+        const userCol = (await db.users.where("uid", "==", uid).limit(1).get()).docs;
 
         if (userCol.length > 0) {
             const data = JSON.stringify(userCol[0].data());

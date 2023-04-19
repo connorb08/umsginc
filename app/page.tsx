@@ -110,7 +110,7 @@ export default function Home() {
                     <p
                         className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
                     >
-                        Learn about our governance
+                        View important announcements
                     </p>
                 </a>
 

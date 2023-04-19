@@ -13,5 +13,3 @@ export const getCurrentUser = async () => {
   const session = await getSession()
   return session?.user;
 }
-
-// export default function x(){}
