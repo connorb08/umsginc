@@ -1,4 +1,38 @@
+'use client';
+
+import { useState } from "react";
+
 export default function Bylaws() {
+    const [bylaw, setBylaw] = useState<string>(
+        "https://bylaws.umsg.app/Constitution.pdf"
+    );
+    const [selected, setSelected] = useState(0);
+
+    const Constitution = () => {
+        setBylaw("https://bylaws.umsg.app/constitution.pdf");
+        setSelected(0);
+    };
+    const StandingRules = () => {
+        setBylaw("https://bylaws.umsg.app/standing_rules.pdf");
+        setSelected(1);
+    };
+    const FinancialPolicies = () => {
+        setBylaw("https://bylaws.umsg.app/financial_policies.pdf");
+        setSelected(2);
+    };
+    const SORP = () => {
+        setBylaw("https://bylaws.umsg.app/sorp.pdf");
+        setSelected(3);
+    };
+    const EmploymentPolicies = () => {
+        setBylaw("https://bylaws.umsg.app/employment_policies.pdf");
+        setSelected(4);
+    };
+    const FEPC = () => {
+        setBylaw("https://bylaws.umsg.app/fepc_guidelines.pdf");
+        setSelected(5);
+    };
+
     return (
         <>
             <div className="sm:hidden">
@@ -19,45 +53,65 @@ export default function Bylaws() {
             <ul className="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
                 <li className="w-full">
                     <a
-                        href="#"
-                        className="inline-block w-full p-4 text-gray-900 bg-gray-100 rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white"
+                        onClick={Constitution}
+                        className={`inline-block cursor-pointer w-full p-4 rounded-l-lg ${(selected === 0) ? "text-gray-900 bg-gray-100 focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"}`}
                         aria-current="page"
                     >
-                        Profile
+                        Constitution
                     </a>
                 </li>
                 <li className="w-full">
                     <a
-                        href="#"
-                        className="inline-block w-full p-4 bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                        onClick={StandingRules}
+                        className={`inline-block cursor-pointer w-full p-4 ${(selected === 1) ? "text-gray-900 bg-gray-100 focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"}`}
                     >
-                        Dashboard
+                        Standing Rules
                     </a>
                 </li>
                 <li className="w-full">
                     <a
-                        href="#"
-                        className="inline-block w-full p-4 bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                        onClick={FinancialPolicies}
+                        className={`inline-block cursor-pointer w-full p-4 ${(selected === 2) ? "text-gray-900 bg-gray-100 focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"}`}
                     >
-                        Settings
+                        Financial Policies
                     </a>
                 </li>
                 <li className="w-full">
                     <a
-                        href="#"
-                        className="inline-block w-full p-4 bg-white rounded-r-lg hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                        onClick={SORP}
+                        className={`inline-block cursor-pointer w-full p-4 ${(selected === 3) ? "text-gray-900 bg-gray-100 focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"}`}
                     >
-                        Invoice
+                        SORP
+                    </a>
+                </li>
+                <li className="w-full">
+                    <a
+                        onClick={EmploymentPolicies}
+                        className={`inline-block cursor-pointer w-full p-4 ${(selected === 4) ? "text-gray-900 bg-gray-100 focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"}`}
+                    >
+                        Employment Policies
+                    </a>
+                </li>
+                <li className="w-full">
+                    <a
+                        onClick={FEPC}
+                        className={`inline-block cursor-pointer w-full p-4 rounded-r-lg ${(selected === 5) ? "text-gray-900 bg-gray-100 focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"}`}
+                    >
+                        FEPC Guidelines
                     </a>
                 </li>
             </ul>
 
             <div>
-            <iframe id="bylaw_viewer"
-    title="Bylaws"
-    width="100%"
-    height="800"
-    src="https://bylaws.umsg.app/Constitution.pdf" />
+                <iframe
+                    id="bylaw_viewer"
+                    referrerPolicy="same-origin"
+                    allow="fullscreen"
+                    title="Bylaws"
+                    width="100%"
+                    height="800"
+                    src={bylaw}
+                />
             </div>
         </>
     );

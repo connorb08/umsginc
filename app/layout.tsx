@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import { Analytics } from '@vercel/analytics/react' ;
 import "./globals.css";
 
 export const metadata = {
@@ -31,6 +31,7 @@ export default function RootLayout({
         <html lang="en">
             <body className="overscroll-y-none">
                 {children}
+                <Analytics />
             </body>
         </html>
     );
