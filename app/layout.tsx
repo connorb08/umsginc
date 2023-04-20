@@ -29,9 +29,8 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="overscroll-none">
+            <body className="overscroll-y-none">
                 {children}
-                <Footer />
             </body>
         </html>
     );

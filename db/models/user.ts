@@ -5,6 +5,7 @@ export interface DBUser {
     email: string;
     position_id: number;
     position: string;
+    is_admin: boolean;
 }
 
 export class User implements DBUser {
@@ -12,6 +13,7 @@ export class User implements DBUser {
     public email: string;
     public position_id: number;
     public position: string = "none";
+    public is_admin: boolean = false;
 
     constructor(uid: string, email?: string, position_id?: number) {
         this.uid = uid;
@@ -45,6 +47,7 @@ export class User implements DBUser {
             email: this.email,
             position_id: this.position_id,
             position: this.position,
+            is_admin: this.is_admin,
         };
     };
 }

@@ -1,17 +1,47 @@
 "use client";
 
-import { useSession, signIn, signOut, SessionProvider } from "next-auth/react";
-import { useState, useEffect } from "react";
+import {
+    signIn,
+    signOut,
+    getSession,
+    useSession,
+    SessionProvider,
+} from "next-auth/react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Session } from "next-auth/core/types";
 
-const LoginButton = () => {
+export const UserProfileButton = () => {
+    return (
+        <SessionProvider>
+            <SignedInButton />
+        </SessionProvider>
+    );
+};
+const SignedInButton = () => {
+    // const [session, setSession] = useState<Session>({
+    //     user: {
+    //         email: "",
+    //         name: "",
+    //         image: ""
+    //     }
+    // } as Session);
+
     const { data: session } = useSession();
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
+
+    // useEffect(() => {
+    //     getSession().then((s) => {
+    //         if (s) {
+    //             setSession(s);
+    //         }
+    //     })
+    // })
 
     if (session) {
         return (
@@ -22,7 +52,7 @@ const LoginButton = () => {
                         data-dropdown-toggle="userDropdown"
                         data-dropdown-placement="bottom-start"
                         className="w-12 h-12 rounded-full cursor-pointer"
-                        src={session.user!.image || ""}
+                        src={session!.user!.image! || ""}
                         alt="User dropdown"
                         height={48}
                         width={48}
@@ -35,9 +65,9 @@ const LoginButton = () => {
                         className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 fixed top-40"
                     >
                         <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                            <div>{session.user!.name}</div>
+                            <div>{session!.user!.name}</div>
                             <div className="font-medium truncate">
-                                {session.user!.email}
+                                {session!.user!.email}
                             </div>
                         </div>
                         <ul
@@ -82,7 +112,27 @@ const LoginButton = () => {
                 ) : null}
             </div>
         );
+    } else {
+        return (
+            <div className="relative w-12 h-12 overflow-hidden bg-gray-600 rounded-full dark:bg-gray-600">
+                <svg
+                    className="absolute w-14 h-14 text-gray-400 -left-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd"
+                    ></path>
+                </svg>
+            </div>
+        );
     }
+};
+
+export const SignInButton = () => {
     return (
         <button
             className="bg-white hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
@@ -124,13 +174,3 @@ const LoginButton = () => {
         </button>
     );
 };
-
-// export default LoginButton;
-
-export default function Export() {
-    return (
-        <SessionProvider>
-            <LoginButton />
-        </SessionProvider>
-    );
-}

@@ -1,12 +1,18 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/db/firestore";
-import { getProviders } from "next-auth/react";
 import { User } from "@/db/models/user";
 
 export const authOptions = {
     // Configure one or more authentication providers
     site: process.env.NEXTAUTH_URL,
+    pages: {
+        signIn: '/auth/signin'
+        // signOut: '/auth/signout',
+        // error: '/auth/error', // Error code passed in query string as ?error=
+        // verifyRequest: '/auth/verify-request', // (used for check email message)
+        // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+    },
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
@@ -26,15 +32,16 @@ export const authOptions = {
                         const new_user: User = new User(uid, profile.email, 0);
                         const write = await db.users.doc(uid).create(new_user.to_dict());
 
-                    } catch {console.log('Cannot create account. User already exists or an error occured.')} finally {return true}
+                    } catch (err) {console.log('Cannot create account. User already exists or an error occured.')} finally {return true}
 
                 } else { return false; } //return 'error_page?msg=must be verified and maine account
             }
             return false; // Do different verification for other providers that don't have `email_verified`
         },
-        async redirect({ url, baseUrl }: any) {
+        redirect({ url, baseUrl }: any) {
             return baseUrl;
-        },
+        }
+       
     },
 };
 
