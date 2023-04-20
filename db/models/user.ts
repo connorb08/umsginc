@@ -1,11 +1,22 @@
 import { db, UpdateData } from "@/db/firestore";
 
+type ContactInfo = {
+    email: string;
+    phone_number: string;
+}
+
+type UserMetadata = {
+    bio: string
+}
+
 export interface DBUser {
     uid: string;
     email: string;
     position_id: number;
     position: string;
     is_admin: boolean;
+    contact_info: ContactInfo;
+    metadata: UserMetadata;
 }
 
 export class User implements DBUser {
@@ -14,6 +25,8 @@ export class User implements DBUser {
     public position_id: number;
     public position: string = "none";
     public is_admin: boolean = false;
+    public contact_info: ContactInfo = {email: "", phone_number: ""};
+    public metadata: UserMetadata = {bio: ""};
 
     constructor(uid: string, email?: string, position_id?: number) {
         this.uid = uid;
@@ -48,6 +61,8 @@ export class User implements DBUser {
             position_id: this.position_id,
             position: this.position,
             is_admin: this.is_admin,
+            contact_info: this.contact_info,
+            metadata: this.metadata
         };
     };
 }

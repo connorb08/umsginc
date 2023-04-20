@@ -11,6 +11,14 @@ default_users.push({
     position_id: 0,
     position: "none",
     is_admin: true,
+    contact_info: {
+        email: "",
+        phone_number: ""
+    },
+    metadata: {
+        bio: ""
+    },
+    
 });
 
 default_positions.push(new President(

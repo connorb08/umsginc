@@ -1,36 +1,34 @@
-'use client';
+'use client';   
 
 import { useState } from "react";
 
 export default function Bylaws() {
-    const [bylaw, setBylaw] = useState<string>(
-        "https://bylaws.umsg.app/Constitution.pdf"
-    );
-    const [selected, setSelected] = useState(0);
+    const [bylaw, setBylaw] = useState<string>("");
+    const [selected, setSelected] = useState(-1);
 
     const Constitution = () => {
         setBylaw("https://bylaws.umsg.app/constitution.pdf");
-        setSelected(0);
+        setSelected((selected !== 0) ? 0 : -1);
     };
     const StandingRules = () => {
         setBylaw("https://bylaws.umsg.app/standing_rules.pdf");
-        setSelected(1);
+        setSelected((selected !== 1) ? 1 : -1);
     };
     const FinancialPolicies = () => {
         setBylaw("https://bylaws.umsg.app/financial_policies.pdf");
-        setSelected(2);
+        setSelected((selected !== 2) ? 2 : -1);
     };
     const SORP = () => {
         setBylaw("https://bylaws.umsg.app/sorp.pdf");
-        setSelected(3);
+        setSelected((selected !== 3) ? 3 : -1);
     };
     const EmploymentPolicies = () => {
         setBylaw("https://bylaws.umsg.app/employment_policies.pdf");
-        setSelected(4);
+        setSelected((selected !== 4) ? 4 : -1);
     };
     const FEPC = () => {
         setBylaw("https://bylaws.umsg.app/fepc_guidelines.pdf");
-        setSelected(5);
+        setSelected((selected !== 5) ? 5 : -1);
     };
 
     return (
@@ -104,6 +102,7 @@ export default function Bylaws() {
 
             <div>
                 <iframe
+                    className={`${(selected === -1) ? "hidden" : ""}`}
                     id="bylaw_viewer"
                     referrerPolicy="same-origin"
                     allow="fullscreen"

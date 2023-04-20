@@ -1,11 +1,8 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import { Metadata } from "next/types";
-import { useSession, signIn, SessionProvider } from "next-auth/react";
 import LoginButton from "@/components/auth/LoginButton/LoginButtonLoader";
 import Footer from "@/components/Footer";
-import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,25 +15,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default async function Home () {
 
-    // const LoginButtonComponent = () => {
-
-    //     const c =(async () => {
-    //         const component = await LoginButton();
-    //         return component;
-    //     })()
-
-    //     // (LoginButton)().then((res) => {
-    //     //     return res;
-    //     // })
-        
-    //     // const res = LoginButton();
-    //     // return(res)
-    // } 
-
     const LBC = await LoginButton();
     const LoginButtonComponent = () => {return LBC};
-
-    
 
     return (
         <>
@@ -78,10 +58,8 @@ export default async function Home () {
 
             <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
                 <a
-                    href="#"
+                    href="/about"
                     className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-                    target="_blank"
-                    rel="noopener noreferrer"
                 >
                     <h2
                         className={`${inter.className} mb-3 text-2xl font-semibold`}

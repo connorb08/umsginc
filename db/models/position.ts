@@ -1,3 +1,12 @@
+
+type PositionMetadata = {
+    position_holder: {
+        uid: string;
+        email: string;
+        photo: string;
+    }
+}
+
 export interface DBPosition {
     position_id: string;
     title: string;
@@ -10,6 +19,7 @@ export interface DBPosition {
     office_hours: number;
     tasks: string[];
     is_default: boolean;
+    metadata: PositionMetadata;
 }
 
 class Position implements DBPosition {
@@ -24,6 +34,7 @@ class Position implements DBPosition {
     public hours: number;
     public office_hours: number;
     public tasks: string[];
+    public metadata: PositionMetadata = {position_holder: {uid: "", email: "", photo: ""}}
 
     // Class instance variables
     public is_default: boolean;
@@ -66,6 +77,7 @@ class Position implements DBPosition {
             hours: this.hours,
             office_hours: this.office_hours,
             tasks: this.tasks,
+            metadata: this.metadata,
             is_default: this.is_default,
         };
     };

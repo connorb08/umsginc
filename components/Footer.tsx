@@ -49,7 +49,7 @@ const Footer = () => {
                                         href="#"
                                         className="hover:underline"
                                     >
-                                        Third
+                                        Donate Here!
                                     </a>
                                 </li>
                             </ul>
