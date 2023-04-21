@@ -102,6 +102,7 @@ export default function Bylaws() {
 
             <div>
                 <iframe
+                    key={bylaw}
                     className={`${(selected === -1) ? "hidden" : ""}`}
                     id="bylaw_viewer"
                     referrerPolicy="same-origin"

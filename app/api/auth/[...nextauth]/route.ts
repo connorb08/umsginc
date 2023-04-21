@@ -29,8 +29,9 @@ const authOptions = {
                     try {
 
                         // Create user account if it doesn't exist
-                        const new_user: User = new User(uid, profile.email, 0);
-                        const write = await db.users.doc(uid).create(new_user.to_dict());
+                        const new_user: User = new User(profile.email, {name: profile.name, avatar: profile.picture});
+                        const res = await new_user.createDatabaseRecord();
+                        // const write = await db.users.doc(uid).create(new_user.to_dict());
 
                     } catch (err) {console.log('Cannot create account. User already exists or an error occured.')} finally {return true}
 

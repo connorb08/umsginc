@@ -1,12 +1,3 @@
-
-type PositionMetadata = {
-    position_holder: {
-        uid: string;
-        email: string;
-        photo: string;
-    }
-}
-
 export interface DBPosition {
     position_id: string;
     title: string;
@@ -19,11 +10,12 @@ export interface DBPosition {
     office_hours: number;
     tasks: string[];
     is_default: boolean;
-    metadata: PositionMetadata;
+    holder: string;
 }
 
-class Position implements DBPosition {
-    // Posiiton DB fields
+export class Position implements DBPosition {
+
+    // Poston DB fields
     public position_id: string;
     public title: string;
     public supervisor: string;
@@ -34,7 +26,7 @@ class Position implements DBPosition {
     public hours: number;
     public office_hours: number;
     public tasks: string[];
-    public metadata: PositionMetadata = {position_holder: {uid: "", email: "", photo: ""}}
+    public holder: string = "";
 
     // Class instance variables
     public is_default: boolean;
@@ -77,7 +69,7 @@ class Position implements DBPosition {
             hours: this.hours,
             office_hours: this.office_hours,
             tasks: this.tasks,
-            metadata: this.metadata,
+            holder: this.holder,
             is_default: this.is_default,
         };
     };
@@ -136,14 +128,14 @@ class Constitutional extends Executive {
 }
 
 export class President extends Constitutional {
-    constructor(position_id: string, tasks: string[]) {
-        super(position_id, "President", tasks);
+    constructor(tasks: string[]) {
+        super('president', "President", tasks);
     }
 }
 
 export class VP extends Constitutional {
-    constructor(position_id: string, tasks: string[]) {
-        super(position_id, "Vice President", tasks);
+    constructor(tasks: string[]) {
+        super("vice_president", "Vice President", tasks);
     }
 }
 

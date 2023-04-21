@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const Footer = () => {
     return (
@@ -6,10 +6,7 @@ const Footer = () => {
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
-                        <a
-                            href="/"
-                            className="flex items-center"
-                        >
+                        <a href="/" className="flex items-center">
                             <Image
                                 src="/umsglogo.png"
                                 className="h-8 mr-3"
@@ -29,27 +26,18 @@ const Footer = () => {
                             </h2>
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <a
-                                        href="#"
-                                        className="hover:underline"
-                                    >
+                                    <a href="#" className="hover:underline">
                                         Financials
                                     </a>
                                 </li>
                                 <li className="mb-4">
-                                    <a
-                                        href="#"
-                                        className="hover:underline"
-                                    >
+                                    <a href="#" className="hover:underline">
                                         Organizations
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                        href="#"
-                                        className="hover:underline"
-                                    >
-                                        Donate Here!
+                                    <a href="#" className="hover:underline">
+                                        Donate Here
                                     </a>
                                 </li>
                             </ul>
@@ -62,7 +50,9 @@ const Footer = () => {
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
                                     <a
-                                        href="#"
+                                        href="https://www.instagram.com/umsginc"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="hover:underline "
                                     >
                                         Instagram
@@ -70,7 +60,9 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="https://www.linkedin.com/company/umsginc/about/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="hover:underline"
                                     >
                                         LinkedIn
@@ -84,18 +76,25 @@ const Footer = () => {
                             </h2>
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <a href="#" className="hover:underline">
-                                        Privacy Policy
+                                <a
+                                        href="https://www.umsgsls.org/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:underline"
+                                    >
+                                        Student Legal Services
                                     </a>
+                                    
                                 </li>
                                 <li className="mb-4">
-                                    <a href="#" className="hover:underline">
-                                        Terms &amp; Conditions
+                                <a href="#" className="hover:underline">
+                                        Privacy Policy
                                     </a>
+                                   
                                 </li>
                                 <li>
-                                    <a href="#" className="hover:underline">
-                                        Legal Counsel
+                                <a href="#" className="hover:underline">
+                                        Terms &amp; Conditions
                                     </a>
                                 </li>
                             </ul>
@@ -116,7 +115,6 @@ const Footer = () => {
                             href="https://www.instagram.com/umsginc"
                             target="_blank"
                             rel="noopener noreferrer"
-
                             className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             <svg
@@ -133,7 +131,6 @@ const Footer = () => {
                             </svg>
                             <span className="sr-only">Instagram page</span>
                         </a>
-                        
                     </div>
                 </div>
             </div>

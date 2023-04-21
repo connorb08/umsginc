@@ -1,35 +1,75 @@
 import { db } from "@/db/firestore";
 import { DBUser } from "@/db/models/user";
-import { DBPosition, DivisionVP, DOC, DOT, President, VP } from "@/db/models/position";
+import { DivisionVP, DOC, DOT, Position, President, VP } from "@/db/models/position";
 
-const default_positions: DBPosition[] = [];
+const default_positions: Position[] = [];
 const default_users: DBUser[] = [];
 
-default_users.push({
-    uid: "101287001618030796472",
-    email: "umsg@maine.edu",
-    position_id: 0,
-    position: "none",
-    is_admin: true,
-    contact_info: {
-        email: "",
-        phone_number: ""
-    },
-    metadata: {
-        bio: ""
-    },
+// const createDefaultUsers = async () => {
+
+//     new User("temp-connor.bray@maine.edu", {
+//         email: "connor.bray@maine.edu",
+//         position_id: "president",
+//         is_admin: true,
+//         phone_number: "2072726463",
+//         bio: "bio"
+//     }).createDatabaseRecord()
+
+//     new User("temp-michael.delorge@maine.edu", {
+//         email: "michael.delorge@maine.edu",
+//         position_id: "vice_president",
+//         // position: "Vice President"
+//     }).createDatabaseRecord()
+
+//     new User("temp-paige.allen@maine.edu", {
+//         email: "paige.allen@maine.edu",
+//         position_id: "vice_president_fa",
+//         // position: "Vice President for Financial Affairs"
+//     }).createDatabaseRecord()
+
+//     new User("temp-bailey.lewis@maine.edu", {
+//         email: "bailey.lewis@maine.edu",
+//         position_id: "vice_president_so",
+//         // position: "Vice President for Student Organizations"
+//     }).createDatabaseRecord()
+
+//     new User("temp-owen.hebda@maine.edu", {
+//         email: "owen.hebda@maine.edu",
+//         position_id: "vice_president_se",
+//         // position: "Vice President for Student Entertainment"
+//     }).createDatabaseRecord()
+
+//     new User("temp-jacob.chaplin@maine.edu", {
+//         email: "jacob.chaplin@maine.edu",
+//         position_id: "vice_president_sl",
+//         // position: "Vice President for Student Leadership"
+//     }).createDatabaseRecord()
+
+// }
+
+// default_users.push({
+//     uid: "101287001618030796472",
+//     email: "umsg@maine.edu",
+//     position_id: 0,
+//     position: "none",
+//     is_admin: true,
+//     contact_info: {
+//         email: "",
+//         phone_number: ""
+//     },
+//     metadata: {
+//         bio: ""
+//     },
     
-});
+// });
 
 default_positions.push(new President(
-    "president",
     [
         "task1", "task2"
     ]
 ));
 
 default_positions.push(new VP(
-    "vice_president",
     [
         "task1", "task2"
     ]
@@ -100,7 +140,7 @@ const createDefaultPositions = async () => {
     for await (const position of default_positions) {
         db.positions
             .doc(String(position.position_id))
-            .create(position)
+            .create(position.to_dict())
             .catch((e: Error) => {
                 error = e;
             });
@@ -113,29 +153,10 @@ const createDefaultPositions = async () => {
     }
 };
 
-const createDefaultUsers = async () => {
-    var error: Error | null = null;
-
-    for await (const user of default_users) {
-        await db.users
-            .doc(String(user.uid))
-            .create(user)
-            .catch((e: Error) => {
-                error = e;
-            });
-    }
-
-    if (error) {
-        throw error;
-    } else {
-        return;
-    }
-};
 
 export const setup = async () => {
     try {
         await createDefaultPositions();
-        await createDefaultUsers();
     } catch (error) {
         throw error;
     }
