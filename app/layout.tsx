@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="overscroll-y-none">
+            <body className="overscroll-y-none static">
                 {children}
                 <Analytics />
             </body>

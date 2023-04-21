@@ -3,13 +3,11 @@
 import {
     signIn,
     signOut,
-    getSession,
     useSession,
     SessionProvider,
 } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { Session } from "next-auth/core/types";
 
 export const UserProfileButton = () => {
     return (
@@ -19,13 +17,6 @@ export const UserProfileButton = () => {
     );
 };
 const SignedInButton = () => {
-    // const [session, setSession] = useState<Session>({
-    //     user: {
-    //         email: "",
-    //         name: "",
-    //         image: ""
-    //     }
-    // } as Session);
 
     const { data: session } = useSession();
 
@@ -34,14 +25,6 @@ const SignedInButton = () => {
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
-
-    // useEffect(() => {
-    //     getSession().then((s) => {
-    //         if (s) {
-    //             setSession(s);
-    //         }
-    //     })
-    // })
 
     if (session) {
         return (
