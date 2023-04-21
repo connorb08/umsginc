@@ -29,39 +29,39 @@ export default function Bylaws() {
     const FEPC = () => {
         setBylaw("https://bylaws.umsg.app/fepc_guidelines.pdf");
         setSelected(selected !== 5 ? 5 : -1);
-    };
+    };  
 
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selected_value = event.target.value;
-        switch (selected_value) {
-            case "-1":
-                setSelected(-1);
-                break;
-            case "0":
-                Constitution();
-                break;
-            case "1":
-                StandingRules();
-                break;
-            case "2":
-                FinancialPolicies();
-                break;
-            case "3":
-                SORP();
-                break;
-            case "4":
-                EmploymentPolicies();
-                break;
-            case "5":
-                FEPC();
-                break;
-        }
-    };
+    // const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    //     const selected_value = event.target.value;
+    //     switch (selected_value) {
+    //         case "-1":
+    //             setSelected(-1);
+    //             break;
+    //         case "0":
+    //             Constitution();
+    //             break;
+    //         case "1":
+    //             StandingRules();
+    //             break;
+    //         case "2":
+    //             FinancialPolicies();
+    //             break;
+    //         case "3":
+    //             SORP();
+    //             break;
+    //         case "4":
+    //             EmploymentPolicies();
+    //             break;
+    //         case "5":
+    //             FEPC();
+    //             break;
+    //     }
+    // };
 
     return (
         <>
             <div className="sm:hidden bg-white">
-                <label htmlFor="tabs" className="sr-only">
+                {/* <label htmlFor="tabs" className="sr-only">
                     Select document
                 </label>
                 <p className="text-center">Bylaws</p>
@@ -78,7 +78,16 @@ export default function Bylaws() {
                     <option value={3}>SORP</option>
                     <option value={4}>Employment Policies</option>
                     <option value={5}>FEPC Guidelines</option>
-                </select>
+                </select> */}
+                <p className="text-center">Bylaws</p>
+                <ul>
+                    <li><a href="https://bylaws.umsg.app/constitution.pdf" target="_blank" rel="noreferrer noopener">Constitution</a></li>
+                    <li><a href="https://bylaws.umsg.app/standing_rules.pdf" target="_blank" rel="noreferrer noopener">Standing Rules</a></li>
+                    <li><a href="https://bylaws.umsg.app/financial_policies.pdf" target="_blank" rel="noreferrer noopener">Financial Policies</a></li>
+                    <li><a href="https://bylaws.umsg.app/sorp.pdf" target="_blank" rel="noreferrer noopener">SORP</a></li>
+                    <li><a href="https://bylaws.umsg.app/employment_policies.pdf" target="_blank" rel="noreferrer noopener">Employment Policies</a></li>
+                    <li><a href="https://bylaws.umsg.app/fepc_guidelines.pdf" target="_blank" rel="noreferrer noopener">FEPC</a></li>
+                </ul>
             </div>
 
             <ul className="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
@@ -158,9 +167,10 @@ export default function Bylaws() {
             </ul>
 
             <div>
+                {/* <embed key={selected} src={bylaw} height="800" className={`w-full ${selected === -1 ? "hidden" : "relative"}`}></embed> */}
                 <iframe
-                    key={bylaw}
-                    className={`${selected === -1 ? "hidden" : ""}`}
+                    key={selected}
+                    className={`${selected === -1 ? "hidden" : "relative"}`}
                     id="bylaw_viewer"
                     referrerPolicy="same-origin"
                     allow="fullscreen"
