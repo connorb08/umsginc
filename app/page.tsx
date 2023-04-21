@@ -4,6 +4,8 @@ import Link from "next/link";
 import LoginButton from "@/components/auth/LoginButton/LoginButtonLoader";
 import Footer from "@/components/Footer";
 // import setup from "@/db/setup_db";
+import Crypto from "crypto";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +14,12 @@ const inter = Inter({ subsets: ["latin"] });
 //   description: 'Welcome to Next.js',
 // };
 
-// export const runtime = 'experimental-edge';
+// export const metadata = {
+    
+//   };
+
+
+// export const runtime = 'edge';
 
 export default async function Home () {
 
@@ -22,6 +29,7 @@ export default async function Home () {
 
     return (
         <>
+        
         <main>
         <div className="flex min-h-screen flex-col items-center justify-between p-24 select-none">
             <div className="z-10 w-full max-w-5xl items-center justify-end font-mono text-sm lg:flex">
