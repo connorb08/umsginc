@@ -1,22 +1,4 @@
 import { db } from "@/db/firestore";
-import { PassThrough } from "stream";
-
-// const people = [
-//     {
-//         name: "Connor Bray",
-//         email: "connor.bray@maine.edu",
-//         position: "President",
-//         imageUrl:
-//             "https://lh3.googleusercontent.com/a/AEdFTp4tUc9UezM9sn94SRwf1t_inefwZfKlt39F5gxQ1A=s96-c",
-//     },
-//     {
-//         name: "Michael Delorge",
-//         email: "michael.delorge@maine.edu",
-//         position: "Vice President",
-//         imageUrl:
-//             "https://media.licdn.com/dms/image/C5603AQF3zBl5yXuJbQ/profile-displayphoto-shrink_800_800/0/1649991379824?e=1687392000&v=beta&t=JhBSr7sLVel9KpOqMJfFJ7HJ_tXX_bmGYS8JVxG9t3E",
-//     },
-// ];
 
 type people = {
 	email: string;
@@ -37,7 +19,7 @@ export default async function EmployeeViewer() {
 		if (data.holder === "" || data.holder === undefined) {
 			people.push({
 				email: "",
-				name: "No One Assigned",
+				name: "No one assigned",
 				imageUrl: "",
 				title: data.title,
 			})
@@ -59,7 +41,7 @@ export default async function EmployeeViewer() {
         } else {
             people.push({
 				email: data.holder,
-				name: "Account not set up",
+				name: data.holder_name || "Name not available",
 				imageUrl: "",
 				title: data.title
 			})

@@ -31,54 +31,9 @@ export default function Bylaws() {
         setSelected(selected !== 5 ? 5 : -1);
     };  
 
-    // const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    //     const selected_value = event.target.value;
-    //     switch (selected_value) {
-    //         case "-1":
-    //             setSelected(-1);
-    //             break;
-    //         case "0":
-    //             Constitution();
-    //             break;
-    //         case "1":
-    //             StandingRules();
-    //             break;
-    //         case "2":
-    //             FinancialPolicies();
-    //             break;
-    //         case "3":
-    //             SORP();
-    //             break;
-    //         case "4":
-    //             EmploymentPolicies();
-    //             break;
-    //         case "5":
-    //             FEPC();
-    //             break;
-    //     }
-    // };
-
     return (
         <>
             <div className="sm:hidden bg-white">
-                {/* <label htmlFor="tabs" className="sr-only">
-                    Select document
-                </label>
-                <p className="text-center">Bylaws</p>
-                <select
-                    onChange={handleChange}
-                    id="tabs"
-                    value={selected}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                    <option value={-1}>-</option>
-                    <option value={0}>Constitution</option>
-                    <option value={1}>Standing Rules</option>
-                    <option value={2}>Financial Policies</option>
-                    <option value={3}>SORP</option>
-                    <option value={4}>Employment Policies</option>
-                    <option value={5}>FEPC Guidelines</option>
-                </select> */}
                 <p className="text-center">Bylaws</p>
                 <ul>
                     <li><a href="https://bylaws.umsg.app/constitution.pdf" target="_blank" rel="noreferrer noopener">Constitution</a></li>
@@ -167,7 +122,6 @@ export default function Bylaws() {
             </ul>
 
             <div>
-                {/* <embed key={selected} src={bylaw} height="800" className={`w-full ${selected === -1 ? "hidden" : "relative"}`}></embed> */}
                 <iframe
                     key={selected}
                     className={`${selected === -1 ? "hidden" : "relative"}`}

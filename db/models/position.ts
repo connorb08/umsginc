@@ -11,6 +11,7 @@ export interface DBPosition {
     tasks: string[];
     is_default: boolean;
     holder: string;
+    holder_name: string;
 }
 
 export class Position implements DBPosition {
@@ -27,6 +28,7 @@ export class Position implements DBPosition {
     public office_hours: number;
     public tasks: string[];
     public holder: string = "";
+    public holder_name: string = "";
 
     // Class instance variables
     public is_default: boolean;
@@ -56,6 +58,7 @@ export class Position implements DBPosition {
         this.tasks = tasks;
         this.is_default = is_default;
     }
+    
 
     public to_dict = (): DBPosition => {
         return {
@@ -70,6 +73,7 @@ export class Position implements DBPosition {
             office_hours: this.office_hours,
             tasks: this.tasks,
             holder: this.holder,
+            holder_name: this.holder_name,
             is_default: this.is_default,
         };
     };

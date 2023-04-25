@@ -10,8 +10,7 @@ export const metadata = {
         other: [
             {
                 rel: "mask-icon",
-                url: "/safari-pinned-tab.svg",
-                color: "#5bbad5",
+                url: "/safari-pinned-tab.svg"
             },
         ],
     },
@@ -29,7 +28,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="overscroll-y-none static">
+            <body className="overscroll-y-none w-screen h-screen">
                 {children}
                 <Analytics />
             </body>

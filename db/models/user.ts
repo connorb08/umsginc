@@ -1,5 +1,4 @@
 import { db, UpdateData } from "@/db/firestore";
-import { firestore } from "../init";
 import { DBPosition } from "./position";
 
 
@@ -66,8 +65,6 @@ export class User implements DBUser {
         } else {
             throw("Invalid position");
         }
-
-        
 
     };
 
