@@ -1,3 +1,4 @@
+import Header from "@/components/Dashboard/header";
 import Footer from "@/components/Footer";
 
 export default function ResourcesLayout({

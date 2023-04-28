@@ -3,7 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/db/firestore";
 import { User } from "@/db/models/user";
 
-const authOptions = {
+export const authOptions = {
     // Configure one or more authentication providers
     site: process.env.NEXTAUTH_URL,
     pages: {
