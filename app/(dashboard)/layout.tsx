@@ -1,7 +1,6 @@
 import Header from "@/components/Dashboard/header";
 import Sidebar from "@/components/Dashboard/sidebar";
 
-
 export default async function DashboardLayout({
     children,
 }: {

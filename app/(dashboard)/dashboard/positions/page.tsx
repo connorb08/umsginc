@@ -1,5 +1,7 @@
 import { DBPosition } from "@/db/models/position";
 
+export const dynamic = 'force-dynamic'
+
 const getPositions = new Promise<DBPosition[]>(async (resolve, reject) => {
     try {
         const res = await fetch(`${process.env.NEXTAUTH_URL}/api/positions`);// as Promise<DBPosition[]>;

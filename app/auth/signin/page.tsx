@@ -1,6 +1,7 @@
 import SignInPage from "@/components/auth/LoginPage";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 // Redirect to '/' if user is already authenticated
 const SignInPageHandler = async () => {
@@ -8,7 +9,11 @@ const SignInPageHandler = async () => {
     if (session) {
         redirect("/");
     }
-    return <SignInPage />;
+    return (
+        <Suspense fallback={<></>}>
+            <SignInPage />
+        </Suspense>
+    );
 };
 
 export default SignInPageHandler;
