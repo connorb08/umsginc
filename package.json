@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@google-cloud/firestore": "^6.5.0",
+        "@googleapis/people": "^3.0.2",
         "@types/node": "18.15.11",
         "@types/react": "^18.0.35",
         "@types/react-dom": "18.0.11",
@@ -36,6 +37,5 @@
     "devDependencies": {
         "@types/request": "^2"
     },
-    "browser": {
-    }
+    "browser": {}
 }

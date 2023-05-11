@@ -1,5 +1,6 @@
 import { db, UpdateData } from "@/db/firestore";
 import { DBPosition } from "./position";
+import { firestore } from "../init";
 
 
 export type UserMetadata = {
@@ -11,7 +12,6 @@ export interface DBUser {
     email: string;
     name: string;
     position_id: string;
-    // position: string;
     is_admin: boolean;
     phone_number: string;
     metadata: UserMetadata;
@@ -21,8 +21,7 @@ export class User implements DBUser {
     
     public email: string;
     public name: string;
-    public position_id: string;// = "0";
-    // public position: string;// = "none";
+    public position_id: string;
     public is_admin: boolean;
     public phone_number: string;
     public metadata: UserMetadata = {bio: "", avatar: ""};
@@ -31,7 +30,6 @@ export class User implements DBUser {
         this.email = email;
         this.name = optional?.name ? optional.name : "Unavailable",
         this.position_id = optional?.position_id ? optional.position_id : "0";
-        // this.position = optional?.position ? optional.position : "none";
         this.is_admin = optional?.is_admin ? optional.is_admin : false;
         this.phone_number = optional?.phone_number ? optional.phone_number : "";
         this.metadata = {
@@ -43,7 +41,6 @@ export class User implements DBUser {
     public getUser = async () => {
         const user_snapshot = await db.users.doc(this.email).get();
         this.email = user_snapshot.get("email");
-        // this.position = user_snapshot.get("position");
         this.position_id = user_snapshot.get("position_id");
         this.is_admin = user_snapshot.get("is_admin");
         this.phone_number = user_snapshot.get("phone_number");
@@ -55,7 +52,7 @@ export class User implements DBUser {
 
         const position_ref = db.positions.doc(position_id);
         const exists = (await position_ref.get()).exists;
-
+        
         if (exists) {
             const updates: UpdateData<DBPosition> = {
                 holder: this.email
@@ -65,7 +62,6 @@ export class User implements DBUser {
         } else {
             throw("Invalid position");
         }
-
     };
 
     public to_dict = (): DBUser => {
@@ -86,50 +82,44 @@ export class User implements DBUser {
     }
 
     public exists = async () => {
-
         const user_exists = (await db.users.doc(this.email).get()).exists;
         return user_exists;
-        // check if user exists with temp uid and an email also
     }
 
-    // private convertTemp = async () => { // do this in a batch
+    private convertTemp = async () => { // do this in a batch
 
-    //     const user_temp_ref = db.users.doc(`temp-${this.email}`);
-    //     const user_new_ref = db.users.doc(this.email);
+        const user_temp_ref = db.users.doc(`temp-${this.email}`);
+        const user_new_ref = db.users.doc(this.email);
 
-    //     if (!(await user_temp_ref.get()).exists) {
-    //         return false;
-    //     }
+        if (!(await user_temp_ref.get()).exists) {
+            return false;
+        }
 
-    //     try {
-    //         const res = await firestore.runTransaction(async (t) => {
-    //             return await t.get(user_temp_ref).then((user_snapshot) => {
+        try {
+            const res = await firestore.runTransaction(async (t) => {
+                return await t.get(user_temp_ref).then((user_snapshot) => {
 
-    //                 const data = user_snapshot.data();
-
-
+                    const data = user_snapshot.data();
                     
-    //                 // Update position if it is assigned to user
-    //                 // const position_id = (data?.position_id) ? data.position_id : "0";
-    //                 const position_ref = db.positions.doc(data?.position_id || "");
-    //                 t = t.update(position_ref, {holder_uid: this.email});
+                    // Update position if it is assigned to user
+                    // const position_id = (data?.position_id) ? data.position_id : "0";
+                    // const position_ref = db.positions.doc(data?.position_id || "");
                     
-    //                 // if (position_id !== "0") {
-    //                 //     const position_ref = db.positions.doc(position_id)
-    //                 //     t = t.update(position_ref, {position_id: position_id})
-    //                 // }
+                    // if (position_id !== "0") {
+                    //     const position_ref = db.positions.doc(position_id)
+                    //     t = t.update(position_ref, {position_id: position_id})
+                    // }
+                    t.set(user_new_ref, {...data});
+                    t.delete(user_snapshot.ref);
+                    return Promise.resolve(true);
+                }).catch((error) => {
+                    return Promise.reject("transaction error");
+                })
+            })
+            return res;
 
-    //                 t = t.set(user_new_ref, {...data});
-    //                 t.delete(user_snapshot.ref);
-    //                 return Promise.resolve(true);
-    //             }).catch((error) => {
-    //                 return Promise.reject("transaction error");
-    //             })
-    //         })
-    //         return res;
+        } catch(error) {console.log(error); return false;}
 
-    //     } catch(error) {console.log(error); return false;}
-
-    // }
+    }
 
 }
