@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import LoginButton from "@/components/auth/LoginButton/LoginButtonLoader";
-import Footer from "@/components/Footer";
 // import setup from "@/db/setup_db";
 import Crypto from "crypto";
 import { Suspense } from "react";
+import Footer from "../components/Footer";
+import LoginButton from "../components/auth/LoginButton/LoginButtonLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +28,7 @@ export default async function Home() {
                     <div className="z-10 w-full max-w-5xl items-center justify-end font-mono text-sm lg:flex">
                         <div className="flex fixed bottom-0 left-0  h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
                             <Suspense fallback={<></>}>
-                                {/* @ts-ignore */}
+                                {/* @ts-expect-error Server Component */}
                                 <LoginButton />
                             </Suspense>
                         </div>

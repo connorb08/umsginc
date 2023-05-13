@@ -6,7 +6,8 @@
         "dev": "yarn next dev",
         "build": "yarn next build",
         "start": "yarn next start",
-        "lint": "yarn next lint"
+        "lint": "yarn next lint",
+        "test": "yarn cypress"
     },
     "dependencies": {
         "@google-cloud/firestore": "^6.5.0",
@@ -35,7 +36,8 @@
         }
     },
     "devDependencies": {
-        "@types/request": "^2"
+        "@types/request": "^2",
+        "cypress": "^12.12.0"
     },
     "browser": {}
 }
