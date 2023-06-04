@@ -9,14 +9,14 @@ import {
 import { useState } from "react";
 import Image from "next/image";
 
-export const UserProfileButton = () => {
+export function UserProfileButton () {
     return (
         <SessionProvider>
             <SignedInButton />
         </SessionProvider>
     );
 };
-const SignedInButton = () => {
+function SignedInButton () {
 
     const { data: session } = useSession();
 
@@ -107,7 +107,7 @@ const SignedInButton = () => {
     }
 };
 
-export const SignInButton = () => {
+export function SignInButton () {
     return (
         <button
             className="bg-white hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"

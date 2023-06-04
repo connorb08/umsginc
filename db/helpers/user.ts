@@ -26,6 +26,7 @@ interface peopleResponse {
     ];
 }
 
+
 export const createUserRecord = async (email: string, name: string): Promise<CreateUserRecordResponse> => {
     try {
         const session = await getServerSession(authOptions);

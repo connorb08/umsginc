@@ -2,7 +2,7 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 
-export const SignInPage = () => {
+export default function SignInPage() {
     return (
         <main>
             <div className="md:h-screen bg-white relative flex flex-col justify-center items-center">
@@ -38,5 +38,3 @@ export const SignInPage = () => {
         </main>
     );
 };
-
-export default SignInPage;

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer () {
     return (
         <footer className="bg-white dark:bg-gray-900">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -162,5 +162,3 @@ const Footer = () => {
         </footer>
     );
 };
-
-export default Footer;

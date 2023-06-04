@@ -39,12 +39,12 @@ export class User implements DBUser {
     }
 
     public getUser = async () => {
-        const user_snapshot = await db.users.doc(this.email).get();
-        this.email = user_snapshot.get("email");
-        this.position_id = user_snapshot.get("position_id");
-        this.is_admin = user_snapshot.get("is_admin");
-        this.phone_number = user_snapshot.get("phone_number");
-        this.metadata = user_snapshot.get("metadata");
+        const userSnapshot = await db.users.doc(this.email).get();
+        this.email = userSnapshot.get("email");
+        this.position_id = userSnapshot.get("position_id");
+        this.is_admin = userSnapshot.get("is_admin");
+        this.phone_number = userSnapshot.get("phone_number");
+        this.metadata = userSnapshot.get("metadata");
         return this;
     };
 
@@ -62,6 +62,17 @@ export class User implements DBUser {
         } else {
             throw("Invalid position");
         }
+    };
+
+    public toJSON = () => {
+        return {
+            email: this.email,
+            name: this.name,
+            position_id: this.position_id,
+            is_admin: this.is_admin,
+            phone_number: this.phone_number,
+            metadata: this.metadata
+        };
     };
 
     public to_dict = (): DBUser => {

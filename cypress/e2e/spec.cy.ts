@@ -1,5 +1,15 @@
 describe("Home Page", () => {
 
+    before(() => {
+
+    })
+
+    after(() => {
+        
+    })
+
+
+
     beforeEach(() => {
         cy.visit('http://localhost:3000/');
     })

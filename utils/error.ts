@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 
-export const HandleError = (error: Error) => {
+export default function HandleError (error: Error) {
 
     console.log(error);
     return new NextResponse("Error!", {status: 500})
